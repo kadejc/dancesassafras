@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Us — Sassafras Dance Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Sassafras<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="dancers.html">Our Dancers</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="book.html" class="book-btn">Book Us</a></li>
+      <li><a href="#" class="login-btn">Login</a></li>
+    </ul>
+    <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="about.html">About Us</a>
+    <a href="dancers.html">Our Dancers</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="book-btn">Book Us</a>
+    <a href="#">Login</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- BOOK HERO -->
+    <div class="book-hero">
+      <span class="section-label">Let's Make it Happen</span>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;">Book Sassafras</h1>
+      <p style="color:var(--text-muted);max-width:520px;margin:0 auto;font-size:1.05rem;">Tell us about your event and we'll get back to you within 48 hours with availability and pricing.</p>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div style="padding:3rem 1.5rem 0;">
+      <div class="section-inner">
+        <div class="book-info-grid">
+          <div class="book-info-card">
+            <div class="icon">📅</div>
+            <h4>Book Early</h4>
+            <p>We fill up fast — reach out at least 4–6 weeks before your event.</p>
+          </div>
+          <div class="book-info-card">
+            <div class="icon">📍</div>
+            <h4>We Travel</h4>
+            <p>Available for events locally and beyond. Travel fees may apply.</p>
+          </div>
+          <div class="book-info-card">
+            <div class="icon">🎭</div>
+            <h4>Custom Sets</h4>
+            <p>We can tailor our performance to match your theme or vision.</p>
+          </div>
+          <div class="book-info-card">
+            <div class="icon">💬</div>
+            <h4>Quick Response</h4>
+            <p>We respond to all booking inquiries within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING FORM -->
+    <div class="book-form-wrapper">
+      <div class="form-card">
+        <h3 class="form-title">Booking Inquiry</h3>
+        <!-- Replace YOUR_BOOKING_FORM_ID with your Formspree form ID after signing up at formspree.io -->
+        <form action="https://formspree.io/f/YOUR_BOOKING_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New booking inquiry from Sassafras website">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="event_type">Event Type</label>
+            <select id="event_type" name="event_type" required>
+              <option value="">Select event type…</option>
+              <option value="Corporate Event">Corporate Event</option>
+              <option value="Private Party">Private Party</option>
+              <option value="Wedding">Wedding</option>
+              <option value="School / Community Event">School / Community Event</option>
+              <option value="Stage Production">Stage Production</option>
+              <option value="Festival">Festival</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date1">Preferred Date</label>
+              <input type="date" id="date1" name="preferred_date">
+            </div>
+            <div class="form-group">
+              <label for="date2">Alternate Date</label>
+              <input type="date" id="date2" name="alternate_date">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Event Location</label>
+            <input type="text" id="location" name="location" placeholder="City, State or Venue Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="details">Additional Details</label>
+            <textarea id="details" name="details" placeholder="Tell us more — expected audience size, duration, theme, any special requests…"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Submit Booking Inquiry</button>
+          <p class="form-note">We'll follow up at the email address you provided within 48 hours.</p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Sassafras<span style="color:var(--text)">.</span></a>
+        <p>Professional dance group available for bookings, events, and productions.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="dancers.html">Our Dancers</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="book.html">Book Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sassafras Dance Group. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank" aria-label="Facebook">f</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
