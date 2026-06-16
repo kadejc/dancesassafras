@@ -92,10 +92,11 @@ nav {
 }
 .nav-links .login-btn {
   color: var(--pink);
-  border: 1px solid var(--pink);
-  padding: 0.4rem 1rem;
+  border: 2px solid var(--pink);
+  padding: 0.4rem 1.1rem;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: inherit;
+  margin-left: 0.25rem;
   transition: background 0.2s;
 }
 .nav-links .login-btn:hover { background: rgba(202,44,146,0.15); }
