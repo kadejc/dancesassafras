@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Us — Sassafras Dance Group</title>
+  <title>Join Us — Sassafras Dance Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -39,52 +39,23 @@
 
   <div class="page-content">
 
-    <!-- BOOK HERO -->
+    <!-- PAGE HERO -->
     <div class="book-hero">
-      <span class="section-label">Let's Make it Happen</span>
-      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;">Book Sassafras</h1>
-      <p style="color:var(--text-muted);max-width:520px;margin:0 auto;font-size:1.05rem;">Tell us about your event and we'll get back to you within 48 hours with availability and pricing.</p>
+      <span class="section-label">Become a Sassafras</span>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;">Join the Group</h1>
+      <p style="color:var(--text-muted);max-width:540px;margin:0 auto;font-size:1.05rem;">Think you have what it takes? We'd love to meet you. Fill out the application below and we'll be in touch.</p>
     </div>
 
-    <!-- INFO CARDS -->
-    <div style="padding:3rem 1.5rem 0;">
-      <div class="section-inner">
-        <div class="book-info-grid">
-          <div class="book-info-card">
-            <div class="icon">📅</div>
-            <h4>Book Early</h4>
-            <p>We fill up fast — reach out at least 4–6 weeks before your event.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">📍</div>
-            <h4>We Travel</h4>
-            <p>Available for events locally and beyond. Travel fees may apply.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">🎭</div>
-            <h4>Custom Sets</h4>
-            <p>We can tailor our performance to match your theme or vision.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">💬</div>
-            <h4>Quick Response</h4>
-            <p>We respond to all booking inquiries within 48 hours.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BOOKING FORM -->
+    <!-- APPLICATION FORM -->
     <div class="book-form-wrapper">
       <div class="form-card">
-        <h3 class="form-title">Booking Inquiry</h3>
-        <!-- Replace YOUR_BOOKING_FORM_ID with your Formspree form ID after signing up at formspree.io -->
+        <h3 class="form-title">Dancer Application</h3>
         <form action="https://formspree.io/f/mzdwllwb" method="POST">
-          <input type="hidden" name="_subject" value="New booking inquiry from Sassafras website">
+          <input type="hidden" name="_subject" value="New dancer application from Sassafras website">
 
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Your Name</label>
+              <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Jane Smith" required>
             </div>
             <div class="form-group">
@@ -93,43 +64,45 @@
             </div>
           </div>
 
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" placeholder="e.g. 42" min="18">
+            </div>
+          </div>
+
           <div class="form-group">
-            <label for="event_type">Event Type</label>
-            <select id="event_type" name="event_type" required>
-              <option value="">Select event type…</option>
-              <option value="Corporate Event">Corporate Event</option>
-              <option value="Private Party">Private Party</option>
-              <option value="Wedding">Wedding</option>
-              <option value="School / Community Event">School / Community Event</option>
-              <option value="Stage Production">Stage Production</option>
-              <option value="Festival">Festival</option>
-              <option value="Other">Other</option>
+            <label for="experience">Dance Experience</label>
+            <select id="experience" name="experience" required>
+              <option value="">Select your experience level…</option>
+              <option value="Beginner (less than 2 years)">Beginner (less than 2 years)</option>
+              <option value="Intermediate (2–5 years)">Intermediate (2–5 years)</option>
+              <option value="Experienced (5–10 years)">Experienced (5–10 years)</option>
+              <option value="Advanced (10+ years)">Advanced (10+ years)</option>
             </select>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="date1">Preferred Date</label>
-              <input type="date" id="date1" name="preferred_date">
-            </div>
-            <div class="form-group">
-              <label for="date2">Alternate Date</label>
-              <input type="date" id="date2" name="alternate_date">
-            </div>
+          <div class="form-group">
+            <label for="styles">Dance Styles</label>
+            <input type="text" id="styles" name="styles" placeholder="e.g. Jazz, Hip Hop, Ballet, Zumba…">
           </div>
 
           <div class="form-group">
-            <label for="location">Event Location</label>
-            <input type="text" id="location" name="location" placeholder="City, State or Venue Name" required>
+            <label for="background">Dance Background</label>
+            <textarea id="background" name="background" placeholder="Tell us about your dance history — studios, teams, performances, training…"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="details">Additional Details</label>
-            <textarea id="details" name="details" placeholder="Tell us more — expected audience size, duration, theme, any special requests…"></textarea>
+            <label for="why">Why Sassafras?</label>
+            <textarea id="why" name="why" placeholder="Why do you want to join Sassafras? What would you bring to the group?"></textarea>
           </div>
 
-          <button type="submit" class="form-submit">Submit Booking Inquiry</button>
-          <p class="form-note">We'll follow up at the email address you provided within 48 hours.</p>
+          <button type="submit" class="form-submit">Submit Application</button>
+          <p class="form-note">We review all applications and will reach out within 1–2 weeks.</p>
         </form>
       </div>
     </div>
@@ -150,6 +123,7 @@
           <li><a href="dancers.html">Our Dancers</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="join.html">Join Us</a></li>
           <li><a href="book.html">Book Us</a></li>
         </ul>
       </div>
@@ -158,8 +132,6 @@
         <ul>
           <li><a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank">Facebook</a></li>
           <li><a href="https://www.instagram.com/Sassafrastx/" target="_blank">Instagram</a></li>
-          
-          
         </ul>
       </div>
     </div>
@@ -167,6 +139,7 @@
       <p>&copy; 2025 Sassafras Dance Group. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/Sassafrastx/" target="_blank" aria-label="Instagram">ig</a>
       </div>
     </div>
   </footer>
