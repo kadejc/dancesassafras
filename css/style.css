@@ -65,18 +65,17 @@ nav {
 .nav-links a:hover { color: var(--text); }
 .nav-links a.active { color: var(--text); }
 .nav-links .join-btn {
-  color: var(--text);
-  background: transparent;
+  color: #fff;
+  background: var(--pink);
   border: 2px solid var(--pink);
-  color: var(--pink);
   padding: 0.4rem 1.1rem;
   border-radius: 4px;
   margin-left: 0.25rem;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .nav-links .join-btn:hover {
-  background: var(--pink);
-  color: #fff;
+  background: var(--pink-dark);
+  box-shadow: 0 0 14px var(--pink-glow);
 }
 .nav-links .book-btn {
   color: var(--text);
