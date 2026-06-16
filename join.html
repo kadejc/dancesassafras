@@ -8,10 +8,94 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2rem;
+    }
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--bg-card2);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot.active { border-color: var(--pink); background: var(--pink); color: #fff; }
+    .step-dot.done { border-color: var(--pink); background: rgba(202,44,146,0.2); color: var(--pink); }
+    .step-line {
+      width: 60px;
+      height: 2px;
+      background: var(--border);
+      transition: background 0.3s;
+    }
+    .step-line.done { background: var(--pink); }
+    .step-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-label.active { color: var(--pink); }
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+    .btn-back {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-back:hover { border-color: var(--text-muted); color: var(--text); }
+    .btn-next {
+      flex: 1;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-next:hover { background: var(--pink-dark); box-shadow: 0 0 16px var(--pink-glow); }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html"><img src="images/logo.jpg" alt="Sassafras Dance Group" style="height:48px;width:auto;"></a>
     <ul class="nav-links">
@@ -31,7 +115,6 @@
     <a href="about.html">About Us</a>
     <a href="dancers.html">Our Dancers</a>
     <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
     <a href="join.html" class="book-btn">Join Us</a>
     <a href="book.html" class="book-btn">Book Us</a>
     <a href="https://auth.band.us/login?next_url=https%3A%2F%2Fwww.band.us%2Fband%2F95576450%2Fpost" target="_blank">Band Login</a>
@@ -39,77 +122,107 @@
 
   <div class="page-content">
 
-    <!-- PAGE HERO -->
     <div class="book-hero">
       <span class="section-label">Become a Sassafras</span>
       <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;">Join the Group</h1>
       <p style="color:var(--text-muted);max-width:540px;margin:0 auto;font-size:1.05rem;">Think you have what it takes? We'd love to meet you. Fill out the application below and we'll be in touch.</p>
     </div>
 
-    <!-- APPLICATION FORM -->
     <div class="book-form-wrapper">
       <div class="form-card">
-        <h3 class="form-title">Dancer Application</h3>
+
+        <!-- STEP INDICATOR -->
+        <div class="step-indicator">
+          <div class="step-dot active" id="dot-1">1</div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-dot" id="dot-2">2</div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-dot" id="dot-3">3</div>
+        </div>
+
         <form action="https://formspree.io/f/mgobqpdo" method="POST">
           <input type="hidden" name="_subject" value="New dancer application from Sassafras website">
+          <input type="hidden" name="_next" value="https://sassafrastx.com/thankyou-join.html">
 
-          <div class="form-row">
+          <!-- STEP 1: Personal Info -->
+          <div class="step active" id="step-1">
+            <p class="step-label active">Step 1 of 3 — Personal Info</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+              </div>
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="e.g. 42" min="18">
+              </div>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-next" onclick="goToStep(2)">Next — Dance Background →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Dance Background -->
+          <div class="step" id="step-2">
+            <p class="step-label">Step 2 of 3 — Dance Background</p>
             <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+              <label for="experience">Experience Level</label>
+              <select id="experience" name="experience" required>
+                <option value="">Select your experience level…</option>
+                <option value="Beginner (less than 2 years)">Beginner (less than 2 years)</option>
+                <option value="Intermediate (2–5 years)">Intermediate (2–5 years)</option>
+                <option value="Experienced (5–10 years)">Experienced (5–10 years)</option>
+                <option value="Advanced (10+ years)">Advanced (10+ years)</option>
+              </select>
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+              <label for="styles">Dance Styles</label>
+              <input type="text" id="styles" name="styles" placeholder="e.g. Jazz, Hip Hop, Ballet, Zumba…">
             </div>
             <div class="form-group">
-              <label for="age">Age</label>
-              <input type="number" id="age" name="age" placeholder="e.g. 42" min="18">
+              <label for="background">Dance History</label>
+              <textarea id="background" name="background" placeholder="Tell us about your dance background — studios, teams, performances, training…"></textarea>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
+              <button type="button" class="btn-next" onclick="goToStep(3)">Next — Why Sassafras? →</button>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="experience">Dance Experience</label>
-            <select id="experience" name="experience" required>
-              <option value="">Select your experience level…</option>
-              <option value="Beginner (less than 2 years)">Beginner (less than 2 years)</option>
-              <option value="Intermediate (2–5 years)">Intermediate (2–5 years)</option>
-              <option value="Experienced (5–10 years)">Experienced (5–10 years)</option>
-              <option value="Advanced (10+ years)">Advanced (10+ years)</option>
-            </select>
+          <!-- STEP 3: Why Sassafras -->
+          <div class="step" id="step-3">
+            <p class="step-label">Step 3 of 3 — Why Sassafras?</p>
+            <div class="form-group">
+              <label for="why">Why do you want to join Sassafras?</label>
+              <textarea id="why" name="why" placeholder="Tell us what draws you to Sassafras and what you'd bring to the group…" style="min-height:160px;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="availability">Availability</label>
+              <textarea id="availability" name="availability" placeholder="What days/times are you generally available for rehearsals and performances?"></textarea>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(2)">← Back</button>
+              <button type="submit" class="btn-next">Submit Application</button>
+            </div>
+            <p class="form-note">We review all applications and will reach out within 1–2 weeks.</p>
           </div>
 
-          <div class="form-group">
-            <label for="styles">Dance Styles</label>
-            <input type="text" id="styles" name="styles" placeholder="e.g. Jazz, Hip Hop, Ballet, Zumba…">
-          </div>
-
-          <div class="form-group">
-            <label for="background">Dance Background</label>
-            <textarea id="background" name="background" placeholder="Tell us about your dance history — studios, teams, performances, training…"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="why">Why Sassafras?</label>
-            <textarea id="why" name="why" placeholder="Why do you want to join Sassafras? What would you bring to the group?"></textarea>
-          </div>
-
-          <button type="submit" class="form-submit">Submit Application</button>
-          <p class="form-note">We review all applications and will reach out within 1–2 weeks.</p>
         </form>
       </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -145,5 +258,21 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    function goToStep(n) {
+      const total = 3;
+      for (let i = 1; i <= total; i++) {
+        document.getElementById('step-' + i).classList.toggle('active', i === n);
+        const dot = document.getElementById('dot-' + i);
+        dot.classList.remove('active', 'done');
+        if (i === n) dot.classList.add('active');
+        else if (i < n) dot.classList.add('done');
+      }
+      for (let i = 1; i < total; i++) {
+        document.getElementById('line-' + i).classList.toggle('done', i < n);
+      }
+      document.querySelector('.book-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 </body>
 </html>

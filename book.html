@@ -8,10 +8,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-indicator { display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem; }
+    .step-dot { width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:var(--bg-card2);color:var(--text-muted);font-size:0.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all 0.3s;position:relative;z-index:1; }
+    .step-dot.active { border-color:var(--pink);background:var(--pink);color:#fff; }
+    .step-dot.done { border-color:var(--pink);background:rgba(202,44,146,0.2);color:var(--pink); }
+    .step-line { width:60px;height:2px;background:var(--border);transition:background 0.3s; }
+    .step-line.done { background:var(--pink); }
+    .step-label { font-size:0.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-top:2.5rem;margin-bottom:1.5rem; }
+    .step-label.active { color:var(--pink); }
+    .form-nav { display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:1rem; }
+    .btn-back { background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.85rem 1.75rem;border-radius:4px;font-size:0.85rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;transition:border-color 0.2s,color 0.2s; }
+    .btn-back:hover { border-color:var(--text-muted);color:var(--text); }
+    .btn-next { flex:1;background:var(--pink);color:#fff;border:none;padding:0.85rem 1.75rem;border-radius:4px;font-size:0.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;transition:background 0.2s,box-shadow 0.2s; }
+    .btn-next:hover { background:var(--pink-dark);box-shadow:0 0 16px var(--pink-glow); }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html"><img src="images/logo.jpg" alt="Sassafras Dance Group" style="height:48px;width:auto;"></a>
     <ul class="nav-links">
@@ -31,7 +47,6 @@
     <a href="about.html">About Us</a>
     <a href="dancers.html">Our Dancers</a>
     <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
     <a href="join.html" class="book-btn">Join Us</a>
     <a href="book.html" class="book-btn">Book Us</a>
     <a href="https://auth.band.us/login?next_url=https%3A%2F%2Fwww.band.us%2Fband%2F95576450%2Fpost" target="_blank">Band Login</a>
@@ -39,104 +54,115 @@
 
   <div class="page-content">
 
-    <!-- BOOK HERO -->
     <div class="book-hero">
       <span class="section-label">Let's Make it Happen</span>
       <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;">Book Sassafras</h1>
       <p style="color:var(--text-muted);max-width:520px;margin:0 auto;font-size:1.05rem;">Tell us about your event and we'll get back to you within 48 hours with availability and pricing.</p>
     </div>
 
-    <!-- INFO CARDS -->
-    <div style="padding:3rem 1.5rem 0;">
-      <div class="section-inner">
-        <div class="book-info-grid">
-          <div class="book-info-card">
-            <div class="icon">📅</div>
-            <h4>Book Early</h4>
-            <p>We fill up fast — reach out at least 4–6 weeks before your event.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">📍</div>
-            <h4>We Travel</h4>
-            <p>Available for events locally and beyond. Travel fees may apply.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">🎭</div>
-            <h4>Custom Sets</h4>
-            <p>We can tailor our performance to match your theme or vision.</p>
-          </div>
-          <div class="book-info-card">
-            <div class="icon">💬</div>
-            <h4>Quick Response</h4>
-            <p>We respond to all booking inquiries within 48 hours.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BOOKING FORM -->
     <div class="book-form-wrapper">
       <div class="form-card">
-        <h3 class="form-title">Booking Inquiry</h3>
-        <!-- Replace YOUR_BOOKING_FORM_ID with your Formspree form ID after signing up at formspree.io -->
+
+        <div class="step-indicator">
+          <div class="step-dot active" id="dot-1">1</div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-dot" id="dot-2">2</div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-dot" id="dot-3">3</div>
+        </div>
+
         <form action="https://formspree.io/f/mzdwllwb" method="POST">
           <input type="hidden" name="_subject" value="New booking inquiry from Sassafras website">
+          <input type="hidden" name="_next" value="https://sassafrastx.com/thankyou-book.html">
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+          <!-- STEP 1 -->
+          <div class="step active" id="step-1">
+            <p class="step-label active">Step 1 of 3 — Your Info</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+              </div>
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="event_type">Event Type</label>
-            <select id="event_type" name="event_type" required>
-              <option value="">Select event type…</option>
-              <option value="Corporate Event">Corporate Event</option>
-              <option value="Private Party">Private Party</option>
-              <option value="Wedding">Wedding</option>
-              <option value="School / Community Event">School / Community Event</option>
-              <option value="Stage Production">Stage Production</option>
-              <option value="Festival">Festival</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="date1">Preferred Date</label>
-              <input type="date" id="date1" name="preferred_date">
-            </div>
-            <div class="form-group">
-              <label for="date2">Alternate Date</label>
-              <input type="date" id="date2" name="alternate_date">
+            <div class="form-nav">
+              <button type="button" class="btn-next" onclick="goToStep(2)">Next — Event Details →</button>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="location">Event Location</label>
-            <input type="text" id="location" name="location" placeholder="City, State or Venue Name" required>
+          <!-- STEP 2 -->
+          <div class="step" id="step-2">
+            <p class="step-label">Step 2 of 3 — Event Details</p>
+            <div class="form-group">
+              <label for="event_type">Event Type</label>
+              <select id="event_type" name="event_type" required>
+                <option value="">Select event type…</option>
+                <option value="Corporate Event">Corporate Event</option>
+                <option value="Private Party">Private Party</option>
+                <option value="Wedding">Wedding</option>
+                <option value="School / Community Event">School / Community Event</option>
+                <option value="Stage Production">Stage Production</option>
+                <option value="Festival">Festival</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date1">Preferred Date</label>
+                <input type="date" id="date1" name="preferred_date">
+              </div>
+              <div class="form-group">
+                <label for="date2">Alternate Date</label>
+                <input type="date" id="date2" name="alternate_date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location">Event Location</label>
+              <input type="text" id="location" name="location" placeholder="City, State or Venue Name" required>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
+              <button type="button" class="btn-next" onclick="goToStep(3)">Next — Additional Details →</button>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="details">Additional Details</label>
-            <textarea id="details" name="details" placeholder="Tell us more — expected audience size, duration, theme, any special requests…"></textarea>
+          <!-- STEP 3 -->
+          <div class="step" id="step-3">
+            <p class="step-label">Step 3 of 3 — Additional Details</p>
+            <div class="form-group">
+              <label for="audience">Expected Audience Size</label>
+              <select id="audience" name="audience_size">
+                <option value="">Select a range…</option>
+                <option value="Under 50">Under 50</option>
+                <option value="50–150">50–150</option>
+                <option value="150–500">150–500</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="details">Anything Else We Should Know?</label>
+              <textarea id="details" name="details" placeholder="Theme, special requests, duration, stage setup, budget range…" style="min-height:140px;"></textarea>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(2)">← Back</button>
+              <button type="submit" class="btn-next">Submit Inquiry</button>
+            </div>
+            <p class="form-note">We'll follow up within 48 hours at the email you provided.</p>
           </div>
 
-          <button type="submit" class="form-submit">Submit Booking Inquiry</button>
-          <p class="form-note">We'll follow up at the email address you provided within 48 hours.</p>
         </form>
       </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -150,6 +176,7 @@
           <li><a href="dancers.html">Our Dancers</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="join.html">Join Us</a></li>
           <li><a href="book.html">Book Us</a></li>
         </ul>
       </div>
@@ -158,8 +185,6 @@
         <ul>
           <li><a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank">Facebook</a></li>
           <li><a href="https://www.instagram.com/Sassafrastx/" target="_blank">Instagram</a></li>
-          
-          
         </ul>
       </div>
     </div>
@@ -167,10 +192,27 @@
       <p>&copy; 2025 Sassafras Dance Group. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://facebook.com/share/g/1JULacy1gz/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/Sassafrastx/" target="_blank" aria-label="Instagram">ig</a>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    function goToStep(n) {
+      const total = 3;
+      for (let i = 1; i <= total; i++) {
+        document.getElementById('step-' + i).classList.toggle('active', i === n);
+        const dot = document.getElementById('dot-' + i);
+        dot.classList.remove('active', 'done');
+        if (i === n) dot.classList.add('active');
+        else if (i < n) dot.classList.add('done');
+      }
+      for (let i = 1; i < total; i++) {
+        document.getElementById('line-' + i).classList.toggle('done', i < n);
+      }
+      document.querySelector('.book-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 </body>
 </html>
