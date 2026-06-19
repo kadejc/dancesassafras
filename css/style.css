@@ -490,13 +490,15 @@ section { padding: 6rem 1.5rem; }
   background: var(--bg-card);
 }
 .video-thumb {
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #1a0a14, #2a1020);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
 }
+.video-thumb:hover { border-color: var(--pink); transform: translateY(-2px); }
+.video-thumb.active-thumb { border-color: var(--pink); }
 .video-play {
   width: 56px;
   height: 56px;
