@@ -85,6 +85,9 @@
     <script>
       var hv = document.getElementById('hero-video');
       hv.addEventListener('loadedmetadata', function() { hv.currentTime = 1; });
+      hv.addEventListener('timeupdate', function() {
+        if (hv.currentTime < 1) hv.currentTime = 1;
+      });
     </script>
     <div class="hero-content" style="position:relative;z-index:1;">
       <h1>Sassafras<br><span>Dance with Class</span></h1>
