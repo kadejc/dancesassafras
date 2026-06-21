@@ -216,6 +216,16 @@
 
   <script src="js/main.js"></script>
   <script>
+    // Fallback to hqdefault if maxresdefault doesn't exist
+    document.querySelectorAll('img[src*="maxresdefault"]').forEach(function(img) {
+      img.addEventListener('error', function() {
+        this.src = this.src.replace('maxresdefault', 'hqdefault');
+      });
+    });
+    document.getElementById('main-thumb').addEventListener('error', function() {
+      this.src = this.src.replace('maxresdefault', 'hqdefault');
+    });
+
     var currentType = 'youtube';
     var currentSrc = 'https://www.youtube.com/embed/2Urj4QXIMhI';
     var currentThumb = 'https://img.youtube.com/vi/2Urj4QXIMhI/maxresdefault.jpg';
