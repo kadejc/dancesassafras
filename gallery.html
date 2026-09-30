@@ -69,6 +69,7 @@
         <div class="gallery-tabs">
           <button class="tab-btn active" data-tab="photos">Photos</button>
           <button class="tab-btn" data-tab="videos">Videos</button>
+          <button class="tab-btn" data-tab="interviews">Interviews</button>
         </div>
 
         <!-- PHOTOS -->
@@ -104,6 +105,13 @@
             <div class="gallery-item" data-src="images/Gallery/God Bless Texas Salute.png"><img loading="lazy" src="images/Gallery/God Bless Texas Salute.png" alt="Sassafras Dance Group God Bless Texas salute"></div>
             <div class="gallery-item" data-src="images/Gallery/God Bless Texas.png"><img loading="lazy" src="images/Gallery/God Bless Texas.png" alt="Sassafras Dance Group God Bless Texas performance"></div>
             <div class="gallery-item" data-src="images/Gallery/Sassafrass Green Dress.png"><img loading="lazy" src="images/Gallery/Sassafrass Green Dress.png" alt="Sassafras Dance Group green dress performance"></div>
+            <div class="gallery-item" data-src="images/Gallery/20260815_180055_resized.jpg"><img loading="lazy" src="images/Gallery/20260815_180055_resized.jpg" alt="Sassafras Dance Group with Ms. Texas Senior America in patriotic sequin dresses"></div>
+            <div class="gallery-item" data-src="images/Gallery/20260815_182306_resized.jpg"><img loading="lazy" src="images/Gallery/20260815_182306_resized.jpg" alt="Sassafras Dance Group with sheriff's honor guard at a community event"></div>
+            <div class="gallery-item" data-src="images/Gallery/IMG_20260815_203435.jpg"><img loading="lazy" src="images/Gallery/IMG_20260815_203435.jpg" alt="Sassafras Dance Group posing in front of a red, white, and blue balloon arch"></div>
+            <div class="gallery-item" data-src="images/Gallery/IMG_20260816_122510.jpg"><img loading="lazy" src="images/Gallery/IMG_20260816_122510.jpg" alt="Sassafras dancers posing by the Southfork Ranch wagon"></div>
+            <div class="gallery-item" data-src="images/Gallery/IMG_20260816_122521_resized.jpg"><img loading="lazy" src="images/Gallery/IMG_20260816_122521_resized.jpg" alt="Sassafras dancers in front of the Southfork Ranch mansion"></div>
+            <div class="gallery-item" data-src="images/Gallery/IMG_20260816_122529_resized.png"><img loading="lazy" src="images/Gallery/IMG_20260816_122529_resized.png" alt="Sassafras Dance Group at the Southfork Ranch Conference Center"></div>
+            <div class="gallery-item" data-src="images/Gallery/IMG_20260816_122612_resized.png"><img loading="lazy" src="images/Gallery/IMG_20260816_122612_resized.png" alt="Sassafras dancers posing by a carriage at Southfork Ranch"></div>
           </div>
         </div>
 
@@ -182,6 +190,39 @@
             <div class="video-thumb" data-type="youtube" data-src="https://www.youtube.com/embed/P_2d8hKNEfk" data-title="July 4th Coppell Parade" onclick="loadVideo(this)">
               <img src="https://img.youtube.com/vi/P_2d8hKNEfk/maxresdefault.jpg" alt="July 4th Coppell Parade" onerror="this.src='https://img.youtube.com/vi/P_2d8hKNEfk/hqdefault.jpg'" style="width:100%;display:block;border-radius:6px;">
               <div class="video-info"><h4>July 4th Coppell Parade</h4></div>
+            </div>
+
+            <div class="video-thumb" data-type="youtube" data-src="https://www.youtube.com/embed/QGvZkrVlQRM" data-title="Performance" onclick="loadVideo(this)">
+              <img src="https://img.youtube.com/vi/QGvZkrVlQRM/maxresdefault.jpg" alt="Performance" onerror="this.src='https://img.youtube.com/vi/QGvZkrVlQRM/hqdefault.jpg'" style="width:100%;display:block;border-radius:6px;">
+              <div class="video-info"><h4>Performance</h4></div>
+            </div>
+
+            <div class="video-thumb" data-type="youtube" data-src="https://www.youtube.com/embed/2eZ59ig4zmg" data-title="Performance" onclick="loadVideo(this)">
+              <img src="https://img.youtube.com/vi/2eZ59ig4zmg/maxresdefault.jpg" alt="Performance" onerror="this.src='https://img.youtube.com/vi/2eZ59ig4zmg/hqdefault.jpg'" style="width:100%;display:block;border-radius:6px;">
+              <div class="video-info"><h4>Performance</h4></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- INTERVIEWS -->
+        <div class="gallery-section" id="interviews">
+
+          <!-- INTERVIEW PLAYER -->
+          <div id="interview-player" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000;margin-bottom:1.5rem;cursor:pointer;" onclick="activateInterviewPlayer()">
+            <img id="interview-thumb" src="https://img.youtube.com/vi/BWdKQ-yxVYA/maxresdefault.jpg" alt="Interview" onerror="this.src='https://img.youtube.com/vi/BWdKQ-yxVYA/hqdefault.jpg'" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <div id="interview-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:rgba(202,44,146,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+              <span style="font-size:1.8rem;color:#fff;margin-left:5px;">▶</span>
+            </div>
+            <iframe id="interview-yt" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;display:none;"></iframe>
+          </div>
+          <div id="interview-player-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:2rem;color:var(--text);">Interview</div>
+
+          <div class="gallery-video-grid">
+
+            <div class="video-thumb active-thumb" data-src="https://www.youtube.com/embed/BWdKQ-yxVYA" data-title="Interview" onclick="loadInterviewVideo(this)">
+              <img src="https://img.youtube.com/vi/BWdKQ-yxVYA/maxresdefault.jpg" alt="Interview" onerror="this.src='https://img.youtube.com/vi/BWdKQ-yxVYA/hqdefault.jpg'" style="width:100%;display:block;border-radius:6px;">
+              <div class="video-info"><h4>Interview</h4></div>
             </div>
 
           </div>
@@ -284,6 +325,36 @@
       document.getElementById('main-player').onclick = activatePlayer;
       document.getElementById('main-player-title').textContent = title;
       document.getElementById('main-player').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    var currentInterviewSrc = 'https://www.youtube.com/embed/BWdKQ-yxVYA';
+
+    function activateInterviewPlayer() {
+      const yt = document.getElementById('interview-yt');
+      document.getElementById('interview-thumb').style.display = 'none';
+      document.getElementById('interview-play-btn').style.display = 'none';
+      document.getElementById('interview-player').style.cursor = 'default';
+      document.getElementById('interview-player').onclick = null;
+      yt.src = currentInterviewSrc + '?autoplay=1';
+      yt.style.display = 'block';
+    }
+
+    function loadInterviewVideo(el) {
+      document.querySelectorAll('#interviews .video-thumb').forEach(t => t.classList.remove('active-thumb'));
+      el.classList.add('active-thumb');
+      currentInterviewSrc = el.dataset.src;
+      const title = el.dataset.title;
+      const thumb = el.querySelector('img');
+      const yt = document.getElementById('interview-yt');
+      yt.src = '';
+      yt.style.display = 'none';
+      document.getElementById('interview-thumb').src = thumb ? thumb.src : '';
+      document.getElementById('interview-thumb').style.display = 'block';
+      document.getElementById('interview-play-btn').style.display = 'flex';
+      document.getElementById('interview-player').style.cursor = 'pointer';
+      document.getElementById('interview-player').onclick = activateInterviewPlayer;
+      document.getElementById('interview-player-title').textContent = title;
+      document.getElementById('interview-player').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
 </body>
